@@ -1,0 +1,3 @@
+/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles/rebuild_cache.dir
+/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles/solver.dir
+/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles/edit_cache.dir

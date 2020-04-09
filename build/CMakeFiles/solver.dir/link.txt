@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/solver.dir/src/Board.cpp.o CMakeFiles/solver.dir/src/minimax.cpp.o CMakeFiles/solver.dir/src/main.cpp.o  -o solver 

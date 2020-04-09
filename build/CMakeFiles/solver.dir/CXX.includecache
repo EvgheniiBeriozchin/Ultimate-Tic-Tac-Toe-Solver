@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Board.h
+iostream
+-
+vector
+-
+
+/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/Board.cpp
+Board.h
+/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/Board.h
+
+/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/main.cpp
+Board.h
+/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/Board.h
+iostream
+-
+
+/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/minimax.cpp
+Board.h
+/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/Board.h
+limits
+-
+
