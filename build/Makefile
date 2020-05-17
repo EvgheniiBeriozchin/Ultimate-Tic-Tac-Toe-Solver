@@ -150,6 +150,33 @@ src/Board.cpp.s:
 	$(MAKE) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/Board.cpp.s
 .PHONY : src/Board.cpp.s
 
+src/TranspositionTable.o: src/TranspositionTable.cpp.o
+
+.PHONY : src/TranspositionTable.o
+
+# target to build an object file
+src/TranspositionTable.cpp.o:
+	$(MAKE) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/TranspositionTable.cpp.o
+.PHONY : src/TranspositionTable.cpp.o
+
+src/TranspositionTable.i: src/TranspositionTable.cpp.i
+
+.PHONY : src/TranspositionTable.i
+
+# target to preprocess a source file
+src/TranspositionTable.cpp.i:
+	$(MAKE) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/TranspositionTable.cpp.i
+.PHONY : src/TranspositionTable.cpp.i
+
+src/TranspositionTable.s: src/TranspositionTable.cpp.s
+
+.PHONY : src/TranspositionTable.s
+
+# target to generate assembly for a file
+src/TranspositionTable.cpp.s:
+	$(MAKE) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/TranspositionTable.cpp.s
+.PHONY : src/TranspositionTable.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -216,6 +243,9 @@ help:
 	@echo "... src/Board.o"
 	@echo "... src/Board.i"
 	@echo "... src/Board.s"
+	@echo "... src/TranspositionTable.o"
+	@echo "... src/TranspositionTable.i"
+	@echo "... src/TranspositionTable.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

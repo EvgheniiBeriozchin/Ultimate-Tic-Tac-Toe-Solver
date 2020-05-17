@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/solver.dir/src/Board.cpp.o"
+  "CMakeFiles/solver.dir/src/TranspositionTable.cpp.o"
   "CMakeFiles/solver.dir/src/minimax.cpp.o"
   "CMakeFiles/solver.dir/src/main.cpp.o"
   "solver.pdb"

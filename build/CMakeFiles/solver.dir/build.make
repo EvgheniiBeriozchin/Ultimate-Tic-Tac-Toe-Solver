@@ -81,9 +81,33 @@ CMakeFiles/solver.dir/src/Board.cpp.o.provides: CMakeFiles/solver.dir/src/Board.
 CMakeFiles/solver.dir/src/Board.cpp.o.provides.build: CMakeFiles/solver.dir/src/Board.cpp.o
 
 
+CMakeFiles/solver.dir/src/TranspositionTable.cpp.o: CMakeFiles/solver.dir/flags.make
+CMakeFiles/solver.dir/src/TranspositionTable.cpp.o: ../src/TranspositionTable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/solver.dir/src/TranspositionTable.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/solver.dir/src/TranspositionTable.cpp.o -c /home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/TranspositionTable.cpp
+
+CMakeFiles/solver.dir/src/TranspositionTable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/solver.dir/src/TranspositionTable.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/TranspositionTable.cpp > CMakeFiles/solver.dir/src/TranspositionTable.cpp.i
+
+CMakeFiles/solver.dir/src/TranspositionTable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/solver.dir/src/TranspositionTable.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/TranspositionTable.cpp -o CMakeFiles/solver.dir/src/TranspositionTable.cpp.s
+
+CMakeFiles/solver.dir/src/TranspositionTable.cpp.o.requires:
+
+.PHONY : CMakeFiles/solver.dir/src/TranspositionTable.cpp.o.requires
+
+CMakeFiles/solver.dir/src/TranspositionTable.cpp.o.provides: CMakeFiles/solver.dir/src/TranspositionTable.cpp.o.requires
+	$(MAKE) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/TranspositionTable.cpp.o.provides.build
+.PHONY : CMakeFiles/solver.dir/src/TranspositionTable.cpp.o.provides
+
+CMakeFiles/solver.dir/src/TranspositionTable.cpp.o.provides.build: CMakeFiles/solver.dir/src/TranspositionTable.cpp.o
+
+
 CMakeFiles/solver.dir/src/minimax.cpp.o: CMakeFiles/solver.dir/flags.make
 CMakeFiles/solver.dir/src/minimax.cpp.o: ../src/minimax.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/solver.dir/src/minimax.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/solver.dir/src/minimax.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/solver.dir/src/minimax.cpp.o -c /home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/minimax.cpp
 
 CMakeFiles/solver.dir/src/minimax.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/solver.dir/src/minimax.cpp.o.provides.build: CMakeFiles/solver.dir/sr
 
 CMakeFiles/solver.dir/src/main.cpp.o: CMakeFiles/solver.dir/flags.make
 CMakeFiles/solver.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/solver.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/solver.dir/src/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/solver.dir/src/main.cpp.o -c /home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/main.cpp
 
 CMakeFiles/solver.dir/src/main.cpp.i: cmake_force
@@ -132,6 +156,7 @@ CMakeFiles/solver.dir/src/main.cpp.o.provides.build: CMakeFiles/solver.dir/src/m
 # Object files for target solver
 solver_OBJECTS = \
 "CMakeFiles/solver.dir/src/Board.cpp.o" \
+"CMakeFiles/solver.dir/src/TranspositionTable.cpp.o" \
 "CMakeFiles/solver.dir/src/minimax.cpp.o" \
 "CMakeFiles/solver.dir/src/main.cpp.o"
 
@@ -139,11 +164,15 @@ solver_OBJECTS = \
 solver_EXTERNAL_OBJECTS =
 
 solver: CMakeFiles/solver.dir/src/Board.cpp.o
+solver: CMakeFiles/solver.dir/src/TranspositionTable.cpp.o
 solver: CMakeFiles/solver.dir/src/minimax.cpp.o
 solver: CMakeFiles/solver.dir/src/main.cpp.o
 solver: CMakeFiles/solver.dir/build.make
+solver: /usr/local/lib/libmongocxx.so
+solver: /usr/local/lib/libbsoncxx.so
+solver: /usr/local/lib/libbsoncxx.so
 solver: CMakeFiles/solver.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable solver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable solver"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/solver.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -152,6 +181,7 @@ CMakeFiles/solver.dir/build: solver
 .PHONY : CMakeFiles/solver.dir/build
 
 CMakeFiles/solver.dir/requires: CMakeFiles/solver.dir/src/Board.cpp.o.requires
+CMakeFiles/solver.dir/requires: CMakeFiles/solver.dir/src/TranspositionTable.cpp.o.requires
 CMakeFiles/solver.dir/requires: CMakeFiles/solver.dir/src/minimax.cpp.o.requires
 CMakeFiles/solver.dir/requires: CMakeFiles/solver.dir/src/main.cpp.o.requires
 
