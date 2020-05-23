@@ -8,11 +8,15 @@ TranspositionTable::TranspositionTable()
 TranspositionTable::TranspositionTable(mongocxx::collection collection)
 {
     this->hit_counter = 0;
-
+    int j = 0;
     auto cursor = collection.find({});
     for (auto&& doc : cursor) {
         auto item = bsoncxx::to_json(doc);
-        this->transposition_table[doc["key"].get_utf8().value.to_string()] = doc["value"].get_int32().value;
+        string key = doc["key"].get_utf8().value.to_string();
+        this->latest_boards.push(key);
+        this->transposition_table[key] = doc["value"].get_int32().value;
+        if (++j >= STACK_SIZE)
+            break;
     }
 
     cout << "Transposition table created with " << this->transposition_table.size() << " items." << endl;
@@ -35,14 +39,17 @@ void TranspositionTable::set(Board board, int value)
             this->biggest_boards.pop();
         }
 
-        if (this->latest_boards.size() == STACK_SIZE)
+        if (this->latest_boards.size() >= STACK_SIZE)
+        {
+            this->transposition_table.erase(this->latest_boards.top());
             this->latest_boards.pop();
+        }
+            
         this->latest_boards.push(string_board);
     }
 
     this->transposition_table[string_board] = value; 
 }
-
 
 int TranspositionTable::get(Board board)
 {
@@ -57,6 +64,11 @@ int TranspositionTable::get(Board board)
 int TranspositionTable::get_hit_counter()
 {
     return this->hit_counter;
+}
+
+int TranspositionTable::get_size()
+{
+    return this->transposition_table.size();
 }
 
 int TranspositionTable::dump_to_db(mongocxx::collection collection)

@@ -135,13 +135,14 @@ vector<Board> generate_boards(int depth, int number_of_boards)
     return boards;
 }
 
-void add_to_result_database(mongocxx::collection collection, int board_size, string board, int value, int microseconds, string tt_version, string sorting_version, string parallelization)
+void add_to_result_database(mongocxx::collection collection, int board_size, string board, int value, int microseconds, string code_version, string tt_version, string sorting_version, string parallelization)
 {
     bsoncxx::builder::stream::document document{};
     document << "board_size" << board_size
     << "board" << board
     << "value" << value
     << "time_in_microseconds" << microseconds
+    << "version" << code_version
     << "transposition_table" << tt_version
     << "sorting" << sorting_version
     << "parallelization" << parallelization;

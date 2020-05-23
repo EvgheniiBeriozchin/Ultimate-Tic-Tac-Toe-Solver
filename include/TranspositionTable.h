@@ -9,7 +9,7 @@
 #include <mongocxx/client.hpp>
 #include <mongocxx/instance.hpp>
 
-#define STACK_SIZE 20000
+#define STACK_SIZE  200000//2000000 - around 12.1% of RAM
 
 class Compare
 {
@@ -34,5 +34,6 @@ class TranspositionTable
         void set(Board board, int value);
         int get(Board board);
         int get_hit_counter();
+        int get_size();
         int dump_to_db(mongocxx::collection collection);
 };

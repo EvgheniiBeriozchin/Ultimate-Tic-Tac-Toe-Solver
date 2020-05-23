@@ -11,8 +11,8 @@ using namespace std;
 #define MONGODB_CACHE_COLLECTION "cache"
 #define MONGODB_RESULTS_COLLECTION "results"
 
-#define NUMBER_OF_BOARDS 500
-#define BREAK_PERCENTAGE 0.05
+#define NUMBER_OF_BOARDS 5
+#define BREAK_PERCENTAGE 1
 
 int main(int argc, char *argv[])
 {
@@ -31,8 +31,8 @@ void run_parallel_testing()
 
 void run_sequential_testing()
 {
-    srand (time(NULL));
-    //srand(2);
+    //srand (time(NULL));
+    srand(245884);
 
     mongocxx::instance inst{};
     mongocxx::client conn{mongocxx::uri{}};
@@ -42,15 +42,12 @@ void run_sequential_testing()
 
     bool stop_thread;
     int value,  count_unfinished_boards = 0, j;
-    chrono::milliseconds span (300000);
+    chrono::milliseconds span (1200000);
     chrono::high_resolution_clock::time_point start, stop;
     vector<Board> boards;
     
     for (int i = 74; i > -1; i-=2)
     {
-        if (count_unfinished_boards > BREAK_PERCENTAGE * NUMBER_OF_BOARDS)
-            break;
-
         cout << "Executing for boards with " << i << " tokens." << endl;
         
         if (i == 0)
@@ -82,11 +79,12 @@ void run_sequential_testing()
                 if (++count_unfinished_boards > BREAK_PERCENTAGE * NUMBER_OF_BOARDS)
                 {
                     cout << "Board timeout percentage exceeded. Leaving program at " << i << " moves in." << endl;
+                    break;
                 }
             }
 
             if (!stop_thread)
-                add_to_result_database(results_collection, i, board.to_string(), value, chrono::duration_cast<chrono::microseconds>(stop - start).count(), "with tt_v1.1", "with sorting_v1", "");
+                add_to_result_database(results_collection, i, board.to_string(), value, chrono::duration_cast<chrono::microseconds>(stop - start).count(), "v1.2", "with tt_v1", "with sorting_v1", "");
             j++;
             
             /*
@@ -94,12 +92,11 @@ void run_sequential_testing()
             cout << "The transposition table was hit " << transposition_table.get_hit_counter() << " times." << endl;
             cout << items_added << " items were added to the transposition table cache." << endl;
             */
-        }
-
+        }      
     }
 
     int items_added = transposition_table.dump_to_db(cache_collection);
-    cout << items_added << " items were added to the transposition table cache." << endl;
+    cout << items_added << " items were added to the transposition table cache." << endl;  
     
 }
 
