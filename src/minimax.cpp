@@ -6,7 +6,7 @@
 using namespace std;
 
 int counter = 0;
-
+/*
 bool compare_boards(Board b1, Board b2) 
 {
     int value = -1;
@@ -34,7 +34,7 @@ bool compare_boards(Board b1, Board b2)
     
     return smaller; 
 } 
-
+*/
 int negamax(Board board, TranspositionTable* transposition_table, bool* stop, int depth, int alpha, int beta, int color)
 {
     /*
@@ -44,20 +44,20 @@ int negamax(Board board, TranspositionTable* transposition_table, bool* stop, in
 
     if (*stop)
         return -3;
-    
+    /*
     int val;
     if (val = transposition_table->get(board) != 0)
     {
         return val;
     }
-    
+    */
     int game_state = board.game_state();
     if (depth == 0 || game_state != 0)
         return color * game_state;
 
     int value = -2;
     vector<Board> potential_moves = board.generate_moves();
-    sort(potential_moves.begin(), potential_moves.end(), compare_boards);
+    //sort(potential_moves.begin(), potential_moves.end(), compare_boards);
 
     for (Board b : potential_moves)
     {
@@ -66,12 +66,12 @@ int negamax(Board board, TranspositionTable* transposition_table, bool* stop, in
         if (alpha >= beta || value == 1)
             break;
     }
-    
+    /*
     if (!val && value != 3 && value != -3)
     {
         transposition_table->set(board, value);
     }
-    
+    */
     return value;
 }
 

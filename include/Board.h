@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
@@ -7,34 +8,30 @@ class Board
 {
     //column1|column2|column3|row1|row2|row3|diag1|diag2
     private:
-        int current_player;
         int number_of_moves;
-        pair<int, int> previous_move;
-        vector<int> board[2];
-        int input_bitmasks[9] = {
-            0b00000000100000000100000000100000,
-            0b00000000000100000010000000000000,
-            0b00000000000000100001000000000100,
-            0b00000000010000000000100000000000,
-            0b00000000000010000000010000010010,
-            0b00000000000000010000001000000000,
-            0b00000000001000000000000100000001,
-            0b00000000000001000000000010000000,
-            0b00000000000000001000000001001000
-        };
-        bool board_full(int board_number);
+        vector<uint64_t> board;
+        u_int64_t bitmasks[9] = {0b0111000000000000000000000000000000000000000000000000000000000000,
+                                0b0000111000000000000000000000000000000000000000000000000000000000,
+                                0b0000000111000000000000000000000000000000000000000000000000000000,
+                                0b0100100100000000000000000000000000000000000000000000000000000000,
+                                0b0010010010000000000000000000000000000000000000000000000000000000,
+                                0b0001001001000000000000000000000000000000000000000000000000000000,
+                                0b0100010001000000000000000000000000000000000000000000000000000000,
+                                0b0001010100000000000000000000000000000000000000000000000000000000};
+        
+        bool board_available(u_int64_t bitmask);
         bool boards_full();
+        bool board_full(int board_number);
     
     public:
         Board();
-        Board(int current_player, int number_of_moves, pair<int, int> previous_move, vector<int> board0, vector<int> board1);
+        Board(vector<uint64_t> board, int number_of_moves);
         bool move(int board_number, int position);
-        bool board_won(int board);
+        bool get(bool player, int board_number, int position);
+        bool board_won(bool player, int board_number);
         int game_state();
-        int occupied_spaces(int board_number);
-        int get_board(int i, int j);
-        int get_current_player();
-        int get_previous_move_second();
+        uint64_t occupied_spaces(int board_number);
+        uint64_t get_board(int i);
         int get_number_of_moves();
         Board copy();
         bool same(Board board);

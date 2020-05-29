@@ -11,6 +11,8 @@ iostream
 -
 vector
 -
+cmath
+-
 
 ../include/TranspositionTable.h
 Board.h

@@ -7,15 +7,56 @@
 
 using namespace std;
 
+//#define PRIME 36893488147419103363
+
 #define MONGODB_NAME "tictactoedb"
 #define MONGODB_CACHE_COLLECTION "cache"
 #define MONGODB_RESULTS_COLLECTION "results"
 
-#define NUMBER_OF_BOARDS 5
-#define BREAK_PERCENTAGE 1
+#define NUMBER_OF_BOARDS 500
+#define BREAK_PERCENTAGE 0.05
+
+inline void binary_print(uint64_t n)
+{
+    cout << ((n >> 63) & 1);
+    for (int i = 62; i >= 0; i--)
+    {
+        if ((i + 1) % 9 == 0)
+            cout << " " << ((n >> i) & 1);
+        else
+            cout << ((n >> i) & 1);
+    }
+    cout << endl;
+}
+
+inline void print_board(Board board)
+{
+    binary_print(board.get_board(0));
+    binary_print(board.get_board(1));
+    binary_print(board.get_board(2));
+}
 
 int main(int argc, char *argv[])
 {
+    //cout << PRIME << endl;
+    
+    /*
+    vector<u_int64_t> b = {0b0001110000110001100111100000000011110000010100111000000010000101,
+                            0b0010100001000011010100011010011100001001011010110100001001000010,
+                            0b0001001001000000100110000000000111000111000000000010001000010000}; //56
+    
+    vector<u_int64_t> b = {0b0001110010110001101111100000000011110000010100111000000010100101,
+                            0b0110100101001011010100011110011100001001011010110100101001001010,
+                            0b1001001001000000100110000000000111000111000000000010001000000100}; //62
+    
+    Board bd = Board(b, 64);
+    cout << bd.boards_full() << endl;
+    for(int i = 0; i < 9; i++)
+    {
+        //cout << bd.board_full(i) << endl;
+        //cout << bd.get(1, 9, i) << endl;
+    }
+    */
     /*
     int number_of_moves_in = 40;
     if (argc == 2)
@@ -31,8 +72,7 @@ void run_parallel_testing()
 
 void run_sequential_testing()
 {
-    //srand (time(NULL));
-    srand(245884);
+    srand (time(NULL));
 
     mongocxx::instance inst{};
     mongocxx::client conn{mongocxx::uri{}};
@@ -42,7 +82,7 @@ void run_sequential_testing()
 
     bool stop_thread;
     int value,  count_unfinished_boards = 0, j;
-    chrono::milliseconds span (1200000);
+    chrono::milliseconds span (300000);
     chrono::high_resolution_clock::time_point start, stop;
     vector<Board> boards;
     
@@ -84,7 +124,7 @@ void run_sequential_testing()
             }
 
             if (!stop_thread)
-                add_to_result_database(results_collection, i, board.to_string(), value, chrono::duration_cast<chrono::microseconds>(stop - start).count(), "v1.2", "with tt_v1", "with sorting_v1", "");
+                add_to_result_database(results_collection, i, board.to_string(), value, chrono::duration_cast<chrono::microseconds>(stop - start).count(), "v1.3", "no", "no", "");
             j++;
             
             /*
@@ -99,156 +139,3 @@ void run_sequential_testing()
     cout << items_added << " items were added to the transposition table cache." << endl;  
     
 }
-
-void playable_version()
-{
-    Board b = Board();
-    bool game_finished = false;
-    while (!game_finished)
-    {
-        cout << "It's player's " << b.get_current_player() << " move!" << endl << endl;
-        print_board(b);
-       
-        int board_number, field_number;
-        cin >> board_number >> field_number;
-        game_finished = b.move(board_number, field_number);
-    }
-
-    cout << endl << "Game is finished! Player " << (b.get_current_player() == 0) << " won!" << endl;
-}
-
-void print_board(Board b)
-{
-    //Print board
-    //1st level board
-    cout << "- - - - -" << endl;
-    for (int i = 0; i < 3; i++)
-    {
-        cout << "| ";
-        for (int j = 0; j < 3; j++)
-        {
-            if ((b.get_board(0, 9) & (0b00000000000000000100000000000000 >> (j + 3*i))) > 0)
-            {
-                cout << "x ";
-            }
-            else if ((b.get_board(1, 9) & (0b00000000000000000100000000000000 >> (j + 3*i))) > 0)
-            {
-                cout << "o ";
-            }
-            else 
-            {
-                cout << "  ";
-            }
-        }
-        cout << "|" << endl;
-    }
-    cout << "- - - - -" << endl << endl;
-
-    //2nd level boards
-    for (int l = 0; l < 3; l++)
-    {
-        cout << "- - - - - - - - - - - - -" << endl;
-        for (int k = 0; k < 3; k++)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                cout << "| ";
-                for (int j = 0; j < 3; j++)
-                {
-                    if ((b.get_board(0, i + 3*l) & (0b00000000000000000100000000000000 >> (j + 3*k))) > 0)
-                    {
-                        cout << "x ";
-                    }
-                    else if ((b.get_board(1, i + 3*l) & (0b00000000000000000100000000000000 >> (j + 3*k))) > 0)
-                    {
-                        cout << "o ";
-                    }
-                    else 
-                    {
-                        cout << "  ";
-                    }
-                }
-            }
-            cout << "|" << endl;
-        }
-    }
-    cout << "- - - - - - - - - - - - -" << endl << endl;
-}
-
-/*
-    vector<int> board0 = {
-        0b00000000100000000100000000100000,
-        0b00000000000101000010000010000000,
-        0b00000000000000101001000001001100,
-        0b00000000010000000000100000000000,
-        0b00000000000010000000010000010010,
-        0b00000000010000010000101000000000,
-        0b00000000001000000000000100000001,
-        0b00000000000001000000000010000000,
-        0b00000000000000001000000001001000,
-        0b00000000000000000000000000000000
-    };
-    vector<int> board1 = {
-        0b00000000000100000010000000000000,
-        0b00000000000000010000001000000000,
-        0b00000000001000000000000100000000,
-        0b00000000000100100011000000000100,
-        0b00000000000000001000000001001000,
-        0b00000000000001000000000010000000,
-        0b00000000100000000100000000100000,
-        0b00000000010000010000101000000000,
-        0b00000000100000100101000000100100,
-        0b00000000000000000000000000000000
-    };
-    
-    vector<int> board0 = {
-        0b00000000000000000000000000000000,
-        0b00000000000000111001001001001100,
-        0b00000000000000100001000000000100,
-        0b00000000001001100001000110000101,
-        0b00000000000011011000011011011010,
-        0b00000000000000000000000000000000,
-        0b00000000000000100001000000000100,
-        0b00000000101010010100011100110011,
-        0b00000000000000000000000000000000,
-        0b00000000000100000010000000000000
-    };
-    vector<int> board1 = {
-        0b00000000000001000000000010000000,
-        0b00000000000000000000000000000000,
-        0b00000000000111000010010010010010,
-        0b00000000000000000000000000000000,
-        0b00000000010000100001100000000100,
-        0b00000000000111000010010010010010,
-        0b00000000001001000000000110000001,
-        0b00000000010101000010100010000000,
-        0b00000000000110000010010000010010,
-        0b00000000000000110001001000000100
-    };
-    */
-    //Board board = Board(0, make_pair(6, 7), board0, board1);
-    //Board board = Board();
-    //print_board(board);
-    //cout << negamax(board, &transposition_table, 81, -2, 2, 1) << endl;
-
-     /*
-        - - - - -
-        | x o x |
-        | x o x |
-        | x o x |
-        - - - - -
-
-        - - - - - - - - - - - - -
-        | x o x | x o x | x o x |
-        | o x o | x o x | x o x |
-        | x o x | x o x | x o x |
-        - - - - - - - - - - - - -
-        | x o x | x o x | x o x |
-        | o x o | x o x | x o x |
-        | x o x | x o x | x o x |
-        - - - - - - - - - - - - -
-        | x o x | x o x | x o x |
-        | o x o | x o x | x o x |
-        | x o x | x o x | x o x |
-        - - - - - - - - - - - - -  
-    */
