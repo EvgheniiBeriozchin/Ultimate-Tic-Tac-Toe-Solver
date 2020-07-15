@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/Board.cpp" "/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles/solver.dir/src/Board.cpp.o"
   "/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/TranspositionTable.cpp" "/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles/solver.dir/src/TranspositionTable.cpp.o"
+  "/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/heuristic_functions.cpp" "/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles/solver.dir/src/heuristic_functions.cpp.o"
   "/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/main.cpp" "/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles/solver.dir/src/main.cpp.o"
   "/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/minimax.cpp" "/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles/solver.dir/src/minimax.cpp.o"
   )

@@ -2,11 +2,11 @@
 #include <vector>
 #include "TranspositionTable.h"
 
-int negamax(Board board, TranspositionTable* transposition_table, bool* stop, int depth, int alpha, int beta, int color);
-Board generate_random_board(int depth);
-vector<Board> generate_boards(int depth, int number_of_boards);
-void playable_version();
+int negamax(Board board, TranspositionTable* transposition_table, bool* stop, int size, int alpha, int beta, int color, bool max_pruning, bool ab_pruning, int eval, bool tt);
+Board generate_random_board(int depth); //generate one random board
+vector<Board> generate_boards(int depth, int number_of_boards); //generate random boards for testing
 void print_board(Board b);
-void run_sequential_testing();
-void run_parallel_testing();
-void add_to_result_database(mongocxx::collection collection, int board_size, string board, int value, int microseconds, string code_version, string tt_version, string sorting_version, string parallelization);
+void run_input_board(int type, bool max_pruning, bool ab_pruning, int evaluation, int tt_type, int ordering_type, int tt_size, int time_limit);
+void run_final_testing(int test_size, double break_percentage, int seed, bool max_pruning, bool ab_pruning, int evaluation, int tt_type, int ordering_type, int time_limit, int tt_size, string test_id);
+void add_to_result_database(mongocxx::collection collection, int board_size, int value, int microseconds, string code_version, int test_size, double break_percentage, int seed, int time_limit, bool ab_pruning, bool max_pruning, int evaluation, int tt_type, int ordering_type, int tt_size, string test_id);
+void add_hit_ratio_to_database(mongocxx::collection collection, int board_size, double ratio, string code_version, int test_size, double break_percentage, int seed, int time_limit, bool ab_pruning, bool max_pruning, int evaluation, int tt_type, int ordering_type, int tt_size, string test_id);

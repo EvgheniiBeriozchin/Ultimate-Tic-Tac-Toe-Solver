@@ -136,6 +136,9 @@ CMakeFiles/solver.dir/src/TranspositionTable.cpp.o: /usr/local/include/mongocxx/
 CMakeFiles/solver.dir/src/TranspositionTable.cpp.o: /usr/local/include/mongocxx/v_noabi/mongocxx/write_concern.hpp
 CMakeFiles/solver.dir/src/TranspositionTable.cpp.o: /usr/local/include/mongocxx/v_noabi/mongocxx/write_type.hpp
 
+CMakeFiles/solver.dir/src/heuristic_functions.cpp.o: ../include/Board.h
+CMakeFiles/solver.dir/src/heuristic_functions.cpp.o: ../src/heuristic_functions.cpp
+
 CMakeFiles/solver.dir/src/main.cpp.o: ../include/Board.h
 CMakeFiles/solver.dir/src/main.cpp.o: ../include/TranspositionTable.h
 CMakeFiles/solver.dir/src/main.cpp.o: ../include/functions.h

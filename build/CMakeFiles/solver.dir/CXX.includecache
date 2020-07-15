@@ -13,6 +13,8 @@ vector
 -
 cmath
 -
+bits/stdc++.h
+-
 
 ../include/TranspositionTable.h
 Board.h
@@ -20,8 +22,6 @@ Board.h
 unordered_map
 -
 stack
--
-queue
 -
 bsoncxx/builder/stream/document.hpp
 -
@@ -48,6 +48,10 @@ Board.h
 TranspositionTable.h
 -
 
+/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/heuristic_functions.cpp
+Board.h
+/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/Board.h
+
 /home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/main.cpp
 functions.h
 /home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/functions.h
@@ -68,8 +72,6 @@ functions.h
 limits
 -
 cstdlib
--
-bits/stdc++.h
 -
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/array/element.hpp

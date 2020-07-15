@@ -15,7 +15,7 @@ include_directories("/usr/local/lib")
 
 include_directories(include)
 
-add_executable(solver "src/Board.cpp" "src/TranspositionTable.cpp" "src/minimax.cpp" "src/main.cpp")
+add_executable(solver "src/Board.cpp" "src/TranspositionTable.cpp" "src/minimax.cpp" "src/main.cpp" "src/heuristic_functions.cpp")
 
 target_link_libraries(solver ${LIBMONGOCXX_LIBRARIES})
 target_link_libraries(solver ${LIBBSONCXX_LIBRARIES})

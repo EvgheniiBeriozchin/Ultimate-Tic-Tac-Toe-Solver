@@ -136,6 +136,9 @@ CMakeFiles/solver.dir/src/TranspositionTable.cpp.o
  /usr/local/include/mongocxx/v_noabi/mongocxx/validation_criteria.hpp
  /usr/local/include/mongocxx/v_noabi/mongocxx/write_concern.hpp
  /usr/local/include/mongocxx/v_noabi/mongocxx/write_type.hpp
+CMakeFiles/solver.dir/src/heuristic_functions.cpp.o
+ ../include/Board.h
+ /home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/src/heuristic_functions.cpp
 CMakeFiles/solver.dir/src/main.cpp.o
  ../include/Board.h
  ../include/TranspositionTable.h

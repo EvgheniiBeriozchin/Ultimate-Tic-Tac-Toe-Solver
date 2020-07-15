@@ -177,6 +177,33 @@ src/TranspositionTable.cpp.s:
 	$(MAKE) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/TranspositionTable.cpp.s
 .PHONY : src/TranspositionTable.cpp.s
 
+src/heuristic_functions.o: src/heuristic_functions.cpp.o
+
+.PHONY : src/heuristic_functions.o
+
+# target to build an object file
+src/heuristic_functions.cpp.o:
+	$(MAKE) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/heuristic_functions.cpp.o
+.PHONY : src/heuristic_functions.cpp.o
+
+src/heuristic_functions.i: src/heuristic_functions.cpp.i
+
+.PHONY : src/heuristic_functions.i
+
+# target to preprocess a source file
+src/heuristic_functions.cpp.i:
+	$(MAKE) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/heuristic_functions.cpp.i
+.PHONY : src/heuristic_functions.cpp.i
+
+src/heuristic_functions.s: src/heuristic_functions.cpp.s
+
+.PHONY : src/heuristic_functions.s
+
+# target to generate assembly for a file
+src/heuristic_functions.cpp.s:
+	$(MAKE) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/heuristic_functions.cpp.s
+.PHONY : src/heuristic_functions.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -246,6 +273,9 @@ help:
 	@echo "... src/TranspositionTable.o"
 	@echo "... src/TranspositionTable.i"
 	@echo "... src/TranspositionTable.s"
+	@echo "... src/heuristic_functions.o"
+	@echo "... src/heuristic_functions.i"
+	@echo "... src/heuristic_functions.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
