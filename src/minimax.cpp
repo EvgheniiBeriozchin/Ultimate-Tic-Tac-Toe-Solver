@@ -103,7 +103,7 @@ vector<Board> generate_boards(int depth, int number_of_boards)
 
     return boards;
 }
-
+/*
 void add_to_result_database(mongocxx::collection collection, int board_size, int value, int microseconds, string code_version, int test_size, double break_percentage, int seed, int time_limit, bool ab_pruning, bool max_pruning, int evaluation, int tt_type, int ordering_type, int tt_size, string test_id)
 {
     bsoncxx::builder::stream::document document{};
@@ -146,3 +146,4 @@ void add_hit_ratio_to_database(mongocxx::collection collection, int board_size, 
     
     collection.insert_one(document.view());
 }           
+*/

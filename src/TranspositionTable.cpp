@@ -12,7 +12,7 @@ TranspositionTable::TranspositionTable(int tt_type, int size)
     
     
 }
-
+/*
 TranspositionTable::TranspositionTable(mongocxx::collection collection, int tt_type, int size)
 {
     
@@ -20,7 +20,7 @@ TranspositionTable::TranspositionTable(mongocxx::collection collection, int tt_t
     this->query_counter = 0;
     this->type = tt_type;
     this->size = size;
-    /*
+    
     int j = 0;
     auto cursor = collection.find({});
     for (auto&& doc : cursor) {
@@ -33,9 +33,9 @@ TranspositionTable::TranspositionTable(mongocxx::collection collection, int tt_t
     }
 
     cout << "Transposition table created with " << this->transposition_table.size() << " items." << endl;
-    */
+    
 }
-
+*/
 void TranspositionTable::set(Board board, int value, int size)
 {
     if (this->type == 0)
@@ -110,11 +110,11 @@ int TranspositionTable::get_size()
     else
         return this->size;
 }
-
+/*
 int TranspositionTable::dump_to_db(mongocxx::collection collection)
 {
     int items_added = 0;
-    /*
+    
     for (auto& item: this->transposition_table) {
 
         bsoncxx::builder::stream::document document{};
@@ -127,6 +127,7 @@ int TranspositionTable::dump_to_db(mongocxx::collection collection)
             items_added++;
         }
     }
-    */
+    
     return items_added;
 }
+*/

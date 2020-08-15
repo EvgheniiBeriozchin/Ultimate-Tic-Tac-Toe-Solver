@@ -7,10 +7,10 @@
 
 using namespace std;
 
-#define MONGODB_NAME "tictactoedb"
-#define MONGODB_CACHE_COLLECTION "cache"
-#define MONGODB_RESULTS_COLLECTION "final_results"
-#define MONGODB_HIT_RATIO_COLLECTION "hit_ratios"
+//#define MONGODB_NAME "tictactoedb"
+//#define MONGODB_CACHE_COLLECTION "cache"
+//#define MONGODB_RESULTS_COLLECTION "final_results"
+//#define MONGODB_HIT_RATIO_COLLECTION "hit_ratios"
 
 #define NUMBER_OF_BOARDS 500
 #define BREAK_PERCENTAGE 0.05
@@ -190,12 +190,12 @@ void run_final_testing(int test_size, double break_percentage, int seed, bool ma
 
     ordering = ordering_type;
 
-    mongocxx::instance inst{};
-    mongocxx::client conn{mongocxx::uri{}};
-    auto cache_collection = conn[MONGODB_NAME][MONGODB_CACHE_COLLECTION];
-    auto results_collection = conn[MONGODB_NAME][MONGODB_RESULTS_COLLECTION];
-    auto hit_ratio_collection = conn[MONGODB_NAME][MONGODB_HIT_RATIO_COLLECTION];
-    TranspositionTable transposition_table = TranspositionTable(cache_collection, tt_type, tt_size);
+    //mongocxx::instance inst{};
+    //mongocxx::client conn{mongocxx::uri{}};
+    //auto cache_collection = conn[MONGODB_NAME][MONGODB_CACHE_COLLECTION];
+    //auto results_collection = conn[MONGODB_NAME][MONGODB_RESULTS_COLLECTION];
+    //auto hit_ratio_collection = conn[MONGODB_NAME][MONGODB_HIT_RATIO_COLLECTION];
+    TranspositionTable transposition_table = TranspositionTable(tt_type, tt_size);
 
     bool stop_thread;
     int value,  count_unfinished_boards = 0, j;
@@ -243,18 +243,18 @@ void run_final_testing(int test_size, double break_percentage, int seed, bool ma
             }
 
             if (!stop_thread)
-                add_to_result_database(results_collection, i, value, chrono::duration_cast<chrono::microseconds>(stop - start).count(), "f0.0", test_size, break_percentage, seed, time_limit,
-                max_pruning, ab_pruning, evaluation, tt_type, ordering_type, tt_size, test_id);
+                //add_to_result_database(results_collection, i, value, chrono::duration_cast<chrono::microseconds>(stop - start).count(), "f0.0", test_size, break_percentage, seed, time_limit,
+                //max_pruning, ab_pruning, evaluation, tt_type, ordering_type, tt_size, test_id);
                 j++;
         }
-        if (++count_unfinished_boards <= break_percentage * test_size)
-            add_hit_ratio_to_database(hit_ratio_collection, i, transposition_table.get_hit_ratio(), "f0.0", test_size, break_percentage, seed, time_limit,
-                                        max_pruning, ab_pruning, evaluation, tt_type, ordering_type, tt_size, test_id);      
+        //if (++count_unfinished_boards <= break_percentage * test_size)
+        //    add_hit_ratio_to_database(hit_ratio_collection, i, transposition_table.get_hit_ratio(), "f0.0", test_size, break_percentage, seed, time_limit,
+        //                                max_pruning, ab_pruning, evaluation, tt_type, ordering_type, tt_size, test_id);      
     }
 
-    add_hit_ratio_to_database(hit_ratio_collection, -1, transposition_table.get_hit_ratio(), "f0.0", test_size, break_percentage, seed, time_limit,
-                            max_pruning, ab_pruning, evaluation, tt_type, ordering_type, tt_size, test_id);
+    //add_hit_ratio_to_database(hit_ratio_collection, -1, transposition_table.get_hit_ratio(), "f0.0", test_size, break_percentage, seed, time_limit,
+    //                        max_pruning, ab_pruning, evaluation, tt_type, ordering_type, tt_size, test_id);
 
-    int items_added = transposition_table.dump_to_db(cache_collection);
-    cout << items_added << " items were added to the transposition table cache." << endl;  
+    //int items_added = transposition_table.dump_to_db(cache_collection);
+    //cout << items_added << " items were added to the transposition table cache." << endl;  
 }
