@@ -194,9 +194,6 @@ solver: CMakeFiles/solver.dir/src/minimax.cpp.o
 solver: CMakeFiles/solver.dir/src/main.cpp.o
 solver: CMakeFiles/solver.dir/src/heuristic_functions.cpp.o
 solver: CMakeFiles/solver.dir/build.make
-solver: /usr/local/lib/libmongocxx.so
-solver: /usr/local/lib/libbsoncxx.so
-solver: /usr/local/lib/libbsoncxx.so
 solver: CMakeFiles/solver.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable solver"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/solver.dir/link.txt --verbose=$(VERBOSE)

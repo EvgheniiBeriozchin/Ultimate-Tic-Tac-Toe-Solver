@@ -6,5 +6,5 @@ CXX_FLAGS =  -pthread
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/local/include/mongocxx/v_noabi -I/usr/local/include/bsoncxx/v_noabi -I/usr/local/include/libmongoc-1.0 -I/usr/local/include/libbson-1.0 -I/usr/local/lib -I/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/include 
+CXX_INCLUDES = -I/home/evghenii/CS/Thesis/Ultimate-Tic-Tac-Toe-Solver/include 
 
